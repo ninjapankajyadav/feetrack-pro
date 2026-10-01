@@ -706,19 +706,28 @@ class tuitionDB:
     
                              
 
+   
     def search_students(self, column, value):
-        allowed_columns = {"id", "class", "name", "phone"}
-        if column not in allowed_columns:
-            raise ValueError("Invalid search column")
-        if column == "name":
+        cols = {"id": "student_id",
+                "name": "name", 
+                "class": "class",
+                "phone": "phone"}
+
+        key = str(column).strip().lower()
+        if key not in cols:
+            raise ValueError(f"Invalid search column: {column!r}")
+
+        db_col = cols[key]
+
+        if key == "name":
             query = "SELECT * FROM student WHERE LOWER(name) LIKE %s"
-            param = f"%{value.lower()}%"
+            param = f"%{value.strip().lower()}%"
         else:
-            query = f"SELECT * FROM student WHERE {column} = %s"
-            param = value
+            query = f"SELECT * FROM student WHERE `{db_col}` = %s"
+            param = int(value)
+
         self.cursor.execute(query, (param,))
-        return self.cursor.fetchall()
-                                                                               
+        return self.cursor.fetchall()                                      
     
     def load_reportdata(self):
 

@@ -345,7 +345,7 @@ class StudentPage(CTkFrame):
                                                         
         CTkLabel(bottom_panel,
                                                         
-            text="SELECTED STUDENT â€” DETAILS",
+            text="SELECTED STUDENT DETAILS",
                                                         
             font=("Arial Black", 14),
                                                         
