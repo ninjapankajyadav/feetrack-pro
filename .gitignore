@@ -2,3 +2,10 @@
 __pycache__/
 .env
 *.db
+tempCodeRunnerFile.py
+text.py
+demo.py
+cleanup_comments.py
+remove_comments.py
+Screenshot (142).png
+.vscode/
